@@ -89,7 +89,7 @@ gt_theme <- function(table, theme = "greyscale") {
 #" @export
 #"
 #" @examples dt_theme(financial_data, title = "2023 Financial Earnings", theme = "greenscale")
-dt_theme <- function(table, title, theme = "greyscale") {
+dt_theme <- function(table, theme = "greyscale") {
   if (theme %in% c(NA, NaN, NULL)) {
     stop("Invalid input.")
   }
@@ -100,40 +100,23 @@ dt_theme <- function(table, title, theme = "greyscale") {
 
   themes <- dplyr::filter(tableclothr:::themes, Theme.Name == theme)
 
-  dt_table <- table |>
-    datatable(
-      rownames = FALSE,
-      caption = htmltools::tags$caption(
-        style = "font-family: verdana; caption-side: top; text-align: center; font-weight: bold; font-size: 25px; font-style: normal;",
-        htmltools::em(title)
-      ),
-      callback = JS(paste0(
-        "$('button.buttons-csv').css('background-color','", themes$Heading.Background.Color, "');
-        $('button.buttons-excel').css('background-color','", themes$Heading.Background.Color, "');
-        $('button.buttons-pdf').css('background-color','", themes$Heading.Background.Color, "');
-        $('button.buttons-csv').css('color','", themes$Heading.Text.Color, "');
-        $('button.buttons-excel').css('color','", themes$Heading.Text.Color, "');
-        $('button.buttons-pdf').css('color','", themes$Heading.Text.Color, "');
-        $('table.dataTable tbody tr:odd').css('background-color','", themes$Row.Striping.Background_Color, "');
-        return table;")),
-      extensions = c("Buttons"),
-      options = list(
-        dom = "Bfrtip",
-        buttons = c("csv", "excel", "pdf"),
-        deferRender = TRUE,
-        scrollY = 350,
-        columnDefs = list(list(className = "dt-center", targets = "_all")),
-        initComplete = JS(paste0(
-          "function(settings, json) {
-            $(this.api().table().header()).css({
-              'background-color': '", themes$Heading.Background.Color, "',
-              'color': '", themes$Heading.Text.Color, "'
-            });
-          }"))
-      ),
-      class = "row-border hover compact stripe",
-      fillContainer = T
-    )
+  initComplete <- JS(paste0(
+    "function(settings, json) {
+      $(this.api().table().header()).css({
+        'background-color': '", themes$Heading.Background.Color, "',
+        'color': '", themes$Heading.Text.Color, "'
+        });
+      $('button.buttons-csv').css('background-color','", themes$Heading.Background.Color, "');
+      $('button.buttons-excel').css('background-color','", themes$Heading.Background.Color, "');
+      $('button.buttons-pdf').css('background-color','", themes$Heading.Background.Color, "');
+      $('button.buttons-csv').css('color','", themes$Heading.Text.Color, "');
+      $('button.buttons-excel').css('color','", themes$Heading.Text.Color, "');
+      $('button.buttons-pdf').css('color','", themes$Heading.Text.Color, "');
+      $('table.dataTable tbody tr.odd').css('background-color','", themes$Row.Striping.Background_Color, "');
+      return table;
+      }"))
 
-  return(dt_table)
+  table[['x']][['options']][['initComplete']] <- initComplete
+
+  return(table)
 }
