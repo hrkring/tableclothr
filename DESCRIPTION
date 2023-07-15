@@ -13,4 +13,8 @@ RoxygenNote: 7.2.3
 Imports: 
     dplyr,
     DT,
-    gt
+    gt,
+    htmltools,
+    htmlwidgets
+Depends: 
+    R (>= 2.10)

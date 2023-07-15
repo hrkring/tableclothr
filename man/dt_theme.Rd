@@ -2,13 +2,21 @@
 % Please edit documentation in R/theming.R
 \name{dt_theme}
 \alias{dt_theme}
-\title{Title}
+\title{Provides custom theming functionality for DT tables}
 \usage{
-dt_theme(table, theme)
+dt_theme(table, title, theme = "greyscale")
 }
 \arguments{
-\item{theme}{}
+\item{table}{The DT table to be themed}
+
+\item{theme}{The theme to apply to the table}
+}
+\value{
+The themed DT table
 }
 \description{
-Title
+Provides custom theming functionality for DT tables
+}
+\examples{
+dt_theme(financial_data, title = '2023 Financial Earnings', theme = 'greenscale')
 }

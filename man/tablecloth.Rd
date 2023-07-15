@@ -2,16 +2,39 @@
 % Please edit documentation in R/tablecloth.R
 \name{tablecloth}
 \alias{tablecloth}
-\title{Title}
+\title{This function takes a data frame as input and produces a stylized table
+that can be static or dynamic}
 \usage{
-tablecloth(data, format, theme)
+tablecloth(
+  data,
+  title = NULL,
+  subtitle = NULL,
+  rowname_col = NULL,
+  group_col = NULL,
+  aggregate_by = NULL,
+  format = "static",
+  theme = "default",
+  ...
+)
 }
 \arguments{
-\item{theme}{}
+\item{data}{The data}
+
+\item{title}{The title of your table}
+
+\item{format}{The table format - 'static' or 'dynamic'}
+
+\item{theme}{The table theme}
+
+\item{...}{}
 }
 \value{
-The formatted table
+A formatted table
 }
 \description{
-Title
+This function takes a data frame as input and produces a stylized table
+that can be static or dynamic
+}
+\examples{
+gs_tablecloth(sample_data, title = 'My Sample Data', format = 'static', theme = 'greyscale')
 }

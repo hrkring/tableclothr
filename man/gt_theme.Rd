@@ -2,13 +2,21 @@
 % Please edit documentation in R/theming.R
 \name{gt_theme}
 \alias{gt_theme}
-\title{Title}
+\title{Provides custom theming functionality for gt tables}
 \usage{
-gt_theme(table, theme)
+gt_theme(table, theme = "greyscale")
 }
 \arguments{
-\item{theme}{}
+\item{table}{The gt table to be themed}
+
+\item{theme}{The theme to apply to the table}
+}
+\value{
+The themed gt table
 }
 \description{
-Title
+Provides custom theming functionality for gt tables
+}
+\examples{
+gt_theme(financial_data, theme = 'greenscale')
 }
