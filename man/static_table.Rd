@@ -6,13 +6,18 @@
 \usage{
 static_table(
   data,
+  table_number = NULL,
   title = NULL,
   subtitle = NULL,
   rowname_col = NULL,
   group_col = NULL,
   aggregate_by = NULL,
   autoformat = TRUE,
-  theme
+  order_cols = NULL,
+  rename_cols = NULL,
+  hide_cols = NULL,
+  is_color_coded = FALSE,
+  theme = "default"
 )
 }
 \arguments{

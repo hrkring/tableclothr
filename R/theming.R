@@ -18,6 +18,7 @@ gt_theme <- function(table, theme = "greyscale") {
 
   themes <- dplyr::filter(tableclothr:::themes, Theme.Name == theme)
 
+  # Main Theming Components
   table <- table |>
     tab_options(
       heading.background.color = themes$Heading.Background.Color,
@@ -100,6 +101,7 @@ dt_theme <- function(table, theme = "greyscale") {
 
   themes <- dplyr::filter(tableclothr:::themes, Theme.Name == theme)
 
+  # Main Theming Components
   initComplete <- JS(paste0(
     "function(settings, json) {
       $(this.api().table().header()).css({
@@ -112,10 +114,22 @@ dt_theme <- function(table, theme = "greyscale") {
       $('button.buttons-csv').css('color','", themes$Heading.Text.Color, "');
       $('button.buttons-excel').css('color','", themes$Heading.Text.Color, "');
       $('button.buttons-pdf').css('color','", themes$Heading.Text.Color, "');
-      $('table.dataTable tbody tr.odd').css('background-color','", themes$Row.Striping.Background_Color, "');
       return table;
       }"))
 
+  # Set Row Striping
+  rowCallback <- JS(paste0(
+    "function(row, data, num, index){",
+    "  var $row = $(row);",
+    "  if($row.hasClass('even')){",
+    "    $row.css('background-color', '", themes$Row.Striping.Background_Color, "');",
+    "  }else{",
+    "    $row.css('background-color', 'white');",
+    "  }",
+    "}"
+  ))
+
+  table[['x']][['options']][['rowCallback']] <- rowCallback
   table[['x']][['options']][['initComplete']] <- initComplete
 
   return(table)

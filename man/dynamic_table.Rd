@@ -4,7 +4,7 @@
 \alias{dynamic_table}
 \title{Constructs the dynamic table with an optional theme using DT}
 \usage{
-dynamic_table(data, title, theme)
+dynamic_table(data, rowname_col, group_col, title, theme)
 }
 \arguments{
 \item{data}{The table data}
