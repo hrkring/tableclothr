@@ -1,6 +1,6 @@
 Package: tableclothr
 Title: Flexible Wrappers for Quickly Generating Static and Dynamic Tables
-Version: 0.0.1
+Version: 0.0.1.900
 Authors@R: 
     c(person("Haniah", "Kring", , "hrishonkring@gmail.com", role = c("cre")),
     person("Josiah", "Ringelberg", , "Josiah.Ringelberg@gmail.com", role = c("aut")))
