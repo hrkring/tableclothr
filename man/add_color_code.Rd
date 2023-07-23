@@ -2,22 +2,25 @@
 % Please edit documentation in R/color_coding.R
 \name{add_color_code}
 \alias{add_color_code}
-\title{Title}
+\title{Add 3 level color coding to a column in your table}
 \usage{
 add_color_code(table, col, bounds = NULL, colors = NULL)
 }
 \arguments{
-\item{table}{A gt table}
+\item{table}{A gt table.}
 
-\item{col}{The column to be color coded}
+\item{col}{The column to be color coded.}
 
-\item{bounds}{The bounds for the column being color coded}
+\item{bounds}{The bounds for the column being color coded.}
 
-\item{colors}{The color scale to apply}
+\item{colors}{The color scale to apply.}
 }
 \value{
-a color coded gt table
+a color coded gt table.
 }
 \description{
-Title
+Add 3 level color coding to a column in your table
+}
+\examples{
+add_color_code(gtcars_table, "hp", c(500, 1500), c("red", "yellow", "green"))
 }

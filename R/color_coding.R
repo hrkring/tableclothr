@@ -1,14 +1,15 @@
-#' Title
+#' Add 3 level color coding to a column in your table
 #'
-#' @param table A gt table
-#' @param col The column to be color coded
-#' @param bounds The bounds for the column being color coded
-#' @param colors The color scale to apply
+#' @param table A gt table.
+#' @param col The column to be color coded.
+#' @param bounds The bounds for the column being color coded.
+#' @param colors The color scale to apply.
 #'
-#' @return a color coded gt table
+#' @return a color coded gt table.
 #' @export
 #'
 #' @examples
+#' add_color_code(gtcars_table, "hp", c(500, 1500), c("red", "yellow", "green"))
 add_color_code <- function(table, col, bounds = NULL, colors = NULL) {
   # Use defaults if no value supplied
   if (identical(bounds, NULL)) {
@@ -66,17 +67,18 @@ add_color_code <- function(table, col, bounds = NULL, colors = NULL) {
   return(table)
 }
 
-#' Title
+#' Add 3 level color coding to one or more columns in your table
 #'
-#' @param table A gt table
-#' @param cols The columns to be color coded
-#' @param bounds_list A list of bounds for each column being color coded
-#' @param colors The color scale to apply
+#' @param table A gt table.
+#' @param cols The columns to be color coded.
+#' @param bounds_list A list of bounds for each column being color coded.
+#' @param colors The color scale to apply.
 #'
-#' @return A color coded gt table
+#' @return A color coded gt table.
 #' @export
 #'
 #' @examples
+#' add_color_code(gtcars_table, c("hp", "trq"), list(c(500, 1500), c(500, 1500)), c("red", "yellow", "green"))
 add_color_codes <- function(table, cols, bounds_list = NULL, colors = NULL) {
   if (!identical(names(table), names(gt(mtcars)))) {
     stop("Table is not a gt table.")

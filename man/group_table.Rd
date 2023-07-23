@@ -2,13 +2,21 @@
 % Please edit documentation in R/grouping.R
 \name{group_table}
 \alias{group_table}
-\title{Title}
+\title{Change the table grouping}
 \usage{
 group_table(table, group_col = NULL)
 }
 \arguments{
-\item{group_col}{}
+\item{table}{Input table.}
+
+\item{group_col}{The grouping column.}
+}
+\value{
+The grouped table.
 }
 \description{
-Title
+Change the table grouping
+}
+\examples{
+group_table(gtcars_table, group_col = "mfr")
 }

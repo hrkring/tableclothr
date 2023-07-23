@@ -2,13 +2,23 @@
 % Please edit documentation in R/aggregating.R
 \name{aggregate_data}
 \alias{aggregate_data}
-\title{Title}
+\title{Aggregate data by one or more grouping columns}
 \usage{
 aggregate_data(data, group_cols, aggregate_by = "sum")
 }
 \arguments{
-\item{aggregate_by}{}
+\item{data}{Input data.}
+
+\item{group_cols}{The grouping column(s).}
+
+\item{aggregate_by}{The aggregation method (sum, mean, median, etc.).}
+}
+\value{
+The aggregated data.
 }
 \description{
-Title
+Aggregate data by one or more grouping columns
+}
+\examples{
+aggregate_data(gtcars, c("mfr", "year"), "mean")
 }

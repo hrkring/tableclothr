@@ -3,7 +3,7 @@
 \name{tablecloth}
 \alias{tablecloth}
 \title{This function takes a data frame as input and produces a stylized table
-that can be static or dynamic}
+that can be static (gt) or dynamic (DT)}
 \usage{
 tablecloth(
   data,
@@ -29,17 +29,15 @@ tablecloth(
 
 \item{theme}{The table theme}
 
-\item{format}{The table format - 'static' or 'dynamic'}
-
-\item{...}{}
+\item{format}{The table format - 'gt' or 'dt'}
 }
 \value{
 A formatted table
 }
 \description{
 This function takes a data frame as input and produces a stylized table
-that can be static or dynamic
+that can be static (gt) or dynamic (DT)
 }
 \examples{
-tablecloth(sample_data, title = 'My Sample Data', format = 'static', theme = 'greyscale')
+tablecloth(gtcars, format = 'dynamic', theme = 'greyscale')
 }
