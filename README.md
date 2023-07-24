@@ -4,9 +4,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-tableclothr is a stream-lined and user-friendly R package that offers a set of
-flexible wrappers for effortless creation of static and dynamic tables. Designed
-with  simplicity in mind, users can seamlessly generate themed gt and DT tables
+tableclothr is an R package that offers a set of flexible wrappers and supporting
+functions for the creation and manipulation of gt and DT tables. Designed
+with  simplicity in mind, users can seamlessly generate themed tables
 quickly without the need for lengthy and redundant coding.
 
 ## Installation
@@ -18,9 +18,9 @@ You can install the development version of tableclothr from [GitHub](https://git
 devtools::install_github("hrkring/tableclothr")
 ```
 
-## Example
+## Usage
 
-This is the primary function in tableclothr:
+The primary function in tableclothr is `tablecloth()`:
 
 ``` r
 library(tableclothr)

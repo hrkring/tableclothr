@@ -1,12 +1,12 @@
 #' This function takes a data frame as input and produces a stylized table
 #' that can be static (gt) or dynamic (DT)
 #'
-#' @param data The data
-#' @param title The title of your table
-#' @param format The table format - 'gt' or 'dt'
-#' @param theme The table theme
+#' @param data Input data.
+#' @param title The title of your table.
+#' @param format The table format - 'gt' or 'dt'.
+#' @param theme The table theme.
 #'
-#' @return A formatted table
+#' @return A formatted table.
 #' @export
 #'
 #' @examples tablecloth(gtcars, format = 'dynamic', theme = 'greyscale')

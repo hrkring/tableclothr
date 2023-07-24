@@ -2,7 +2,7 @@
 #'
 #' @param table A gt table.
 #' @param col The column to be color coded.
-#' @param bounds The bounds for the column being color coded.
+#' @param thresholds The thresholds for the column being color coded.
 #' @param colors The color scale to apply.
 #'
 #' @return a color coded gt table.
@@ -10,17 +10,17 @@
 #'
 #' @examples
 #' add_color_code(gtcars_table, "hp", c(500, 1500), c("red", "yellow", "green"))
-add_color_code <- function(table, col, bounds = NULL, colors = NULL) {
+add_color_code <- function(table, col, thresholds = NULL, colors = NULL) {
   # Use defaults if no value supplied
-  if (identical(bounds, NULL)) {
-    bounds <- unname(quantile(table[[1]][[col]], probs = c(.333, .667)))
+  if (identical(thresholds, NULL)) {
+    thresholds <- unname(quantile(table[[1]][[col]], probs = c(.333, .667)))
   }
   if (identical(colors, NULL)) {
     colors <- c("palegreen3", "lightgoldenrodyellow", "darksalmon")
   }
 
-  # Error is bounds and colors are wrong lengths
-  if(length(bounds) != 2) {
+  # Error is thresholds and colors are wrong lengths
+  if(length(thresholds) != 2) {
     stop("You must specify a vector containing a lower and upper bound.")
   }
   if(length(colors) != 3) {
@@ -30,9 +30,9 @@ add_color_code <- function(table, col, bounds = NULL, colors = NULL) {
   # Add color reference column to table
   table[[1]] <- table[[1]] |>
     mutate(across(col, ~ case_when(
-      . < bounds[1] ~ colors[1],
-      . >= bounds[1] & . < bounds[2] ~ colors[2],
-      . >= bounds[2] ~ colors[3]
+      . < thresholds[1] ~ colors[1],
+      . >= thresholds[1] & . < thresholds[2] ~ colors[2],
+      . >= thresholds[2] ~ colors[3]
     ),
     .names = "{.col}.color"
     ))
@@ -71,7 +71,7 @@ add_color_code <- function(table, col, bounds = NULL, colors = NULL) {
 #'
 #' @param table A gt table.
 #' @param cols The columns to be color coded.
-#' @param bounds_list A list of bounds for each column being color coded.
+#' @param thresh_list A list of thresholds for each column being color coded.
 #' @param colors The color scale to apply.
 #'
 #' @return A color coded gt table.
@@ -79,18 +79,18 @@ add_color_code <- function(table, col, bounds = NULL, colors = NULL) {
 #'
 #' @examples
 #' add_color_code(gtcars_table, c("hp", "trq"), list(c(500, 1500), c(500, 1500)), c("red", "yellow", "green"))
-add_color_codes <- function(table, cols, bounds_list = NULL, colors = NULL) {
+add_color_codes <- function(table, cols, thresh_list = NULL, colors = NULL) {
   if (!identical(names(table), names(gt(mtcars)))) {
     stop("Table is not a gt table.")
   }
 
-  if (length(cols) != length(bounds_list) & !identical(bounds_list, NULL)) {
-    stop("The number of columns and the number of bounds must be the same.")
+  if (length(cols) != length(thresh_list) & !identical(thresh_list, NULL)) {
+    stop("The number of columns and thresholds must be the same.")
   }
 
   for(i in seq(length(cols))) {
-    if (!identical(bounds_list, NULL)) {
-      table <- table |> add_color_code(col = cols[i], bounds = bounds_list[[i]], colors = colors)
+    if (!identical(thresh_list, NULL)) {
+      table <- table |> add_color_code(col = cols[i], thresholds = thresh_list[[i]], colors = colors)
     } else {
       table <- table |> add_color_code(col = cols[i], colors = colors)
     }
