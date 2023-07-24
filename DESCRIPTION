@@ -1,12 +1,14 @@
 Package: tableclothr
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Flexible Wrappers for Quickly Generating Static and Dynamic Tables
+Version: 0.0.1.900
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    c(person("Haniah", "Kring", , "hrishonkring@gmail.com", role = c("cre")),
+    person("Josiah", "Ringelberg", , "Josiah.Ringelberg@gmail.com", role = c("aut")))
+Description: A stream-lined and user-friendly R package that offers a set of flexible
+             wrappers for effortless creation of static and dynamic tables. Designed with
+             simplicity in mind, this package allows users to seamlessly generate themed
+             gt and DT tables quickly without the need for complex and redundant coding.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

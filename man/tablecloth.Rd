@@ -3,18 +3,23 @@
 \name{tablecloth}
 \alias{tablecloth}
 \title{This function takes a data frame as input and produces a stylized table
-that can be static or dynamic}
+that can be static (gt) or dynamic (DT)}
 \usage{
 tablecloth(
   data,
+  table_number = NULL,
   title = NULL,
   subtitle = NULL,
   rowname_col = NULL,
   group_col = NULL,
   aggregate_by = NULL,
-  format = "static",
+  autoformat = TRUE,
+  order_cols = NULL,
+  rename_cols = NULL,
+  hide_cols = NULL,
+  is_color_coded = FALSE,
   theme = "default",
-  ...
+  format = "static"
 )
 }
 \arguments{
@@ -22,19 +27,17 @@ tablecloth(
 
 \item{title}{The title of your table}
 
-\item{format}{The table format - 'static' or 'dynamic'}
-
 \item{theme}{The table theme}
 
-\item{...}{}
+\item{format}{The table format - 'gt' or 'dt'}
 }
 \value{
 A formatted table
 }
 \description{
 This function takes a data frame as input and produces a stylized table
-that can be static or dynamic
+that can be static (gt) or dynamic (DT)
 }
 \examples{
-gs_tablecloth(sample_data, title = 'My Sample Data', format = 'static', theme = 'greyscale')
+tablecloth(gtcars, format = 'dynamic', theme = 'greyscale')
 }
